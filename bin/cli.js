@@ -10,7 +10,7 @@ const path = require('path');
 let mailID;
 let password;
 let SERVER_API_KEY;
-const mailPort = 465;
+const mailPort = 587;
 
 // Local
 let API_KEY;
@@ -78,7 +78,7 @@ function createConfig(reader) {
         let writer = fs.createWriteStream(path.resolve(__dirname, "../", "custom", "config.env"))
         writer.write(`mailID = ${mailID.toString()}\n`)
         writer.write(`password = ${password}\n`)
-        writer.write(`mailPort = 465\n`)
+        writer.write(`mailPort = 587\n`)
         // Closing the read stream
         writer.write(`SERVER_API_KEY = ${SERVER_API_KEY}\n\n# ------ Flutter guidelines ------
                     \n# In your Flutter project create a auth.config.dart file in the root of the lib folder,
