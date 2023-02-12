@@ -31,7 +31,7 @@ try:
     OTP = sys.argv[3]
     COMPANY_NAME = ""
     try:
-        COMPANY_NAME = sys.argv[4]
+        COMPANY_NAME = "CLHS Peer Counselling Unit"
     except IndexError:
         print("No company name present")
         COMPANY_NAME = ""
@@ -73,14 +73,14 @@ try:
             # Creating the HTML
             if ("</body>" in LINE) :
                 # Adding the footer for the package
-                HTML += '<br/><a href="https://pub.dev/packages/email_auth" target="_blank" rel="noopener noreferrer">Sent using email_auth</a>'
+                HTML += '<br/><a href="https://www.clhsprs.com" target="_blank" rel="noopener noreferrer">Thanks for using Touch \'n Grow</a>'
             HTML = HTML + LINE if(HTML != "") else LINE
 
     # with open("template.HTML", "w") as template:
     #     template.writeLINEs(HTML)
 
     message = MIMEMultipart('alternative')
-    message['Subject'] = f"Login OTP for {COMPANY_NAME} is {OTP}"
+    message['Subject'] = f"Login OTP for CLHS PRS TOUCH 'n Grow"
     converted = MIMEText(HTML, 'HTML')
     message.attach(converted)
     # server = smtplib.SMTP('smtp.gmail.com', port)
