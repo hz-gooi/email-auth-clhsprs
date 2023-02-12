@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 providers = ["...", "python"]
+=======
+providers = ["...", "python"]
+>>>>>>> 03d60006bd4c94ad401b8498d055b10c0b0840d6
