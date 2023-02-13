@@ -29,7 +29,7 @@ try:
     FROM_MAIL = OrgMail
     TO_MAIL = sys.argv[2]
     OTP = sys.argv[3]
-    COMPANY_NAME = ""
+    COMPANY_NAME = "CLHS Peer Counselling Unit"
     try:
         COMPANY_NAME = "CLHS Peer Counselling Unit"
     except IndexError:
