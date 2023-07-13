@@ -26,7 +26,7 @@ try:
 
 
     port = os.getenv("mailPort")
-    FROM_MAIL = "no-reply@clhsprs.com"
+    FROM_MAIL = OrgMail
     TO_MAIL = sys.argv[1]
     OTP = sys.argv[3]
     COMPANY_NAME = "CLHS Peer Counselling Unit"
