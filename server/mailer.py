@@ -83,7 +83,6 @@ try:
     message = MIMEMultipart('alternative')
     message['Subject'] = f"Login OTP for CLHS PRS Touch 'n Grow"
     message['to'] = f"{TO_MAIL}"
-    message['From'] = f"CLHS Peer Counselling Unit <no-reply@clhsprs.com>"
     converted = MIMEText(HTML, 'HTML')
     message.attach(converted)
     # server = smtplib.SMTP('smtp.gmail.com', port)
@@ -91,7 +90,7 @@ try:
     server.starttls()
     try:
         server.login(OrgMail, OrgPass)
-        server.sendmail(FROM_MAIL, TO_MAIL, message.as_string())
+        server.sendmail("CLHS Peer Counselling Unit <no-reply@clhsprs.com>", TO_MAIL, message.as_string())
         server.quit()
         print("PYTHON SERVER :: success sent mail")
     except Exception as error:
