@@ -8,6 +8,7 @@ from pathlib import Path
 # SMTP server essentials
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from email.header import Header
 import smtplib
 
 # Configuration section
@@ -83,6 +84,8 @@ try:
     message = MIMEMultipart('alternative')
     message['Subject'] = f"Login OTP for CLHS PRS Touch 'n Grow"
     message['to'] = f"{TO_MAIL}"
+    sender = f"CLHS Peer Counselling Unit <no-reply@clhsprs.com>"
+    message['From'] = Header(sender, 'utf-8')
     converted = MIMEText(HTML, 'HTML')
     message.attach(converted)
     # server = smtplib.SMTP('smtp.gmail.com', port)
