@@ -8,7 +8,7 @@ from pathlib import Path
 # SMTP server essentials
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from email.header import Header
+from email.utils import formataddr
 import smtplib
 
 # Configuration section
@@ -25,12 +25,12 @@ try:
     OrgMail = os.getenv("mailID")
     OrgPass = os.getenv("password")
 
-
     port = os.getenv("mailPort")
     FROM_MAIL = OrgMail
     TO_MAIL = sys.argv[2]
     OTP = sys.argv[3]
     COMPANY_NAME = "CLHS Peer Counselling Unit"
+    SENDER_EMAIL = "no-reply@clhsprs.com"
     try:
         COMPANY_NAME = "CLHS Peer Counselling Unit"
     except IndexError:
@@ -84,8 +84,8 @@ try:
     message = MIMEMultipart('alternative')
     message['Subject'] = f"Login OTP for CLHS PRS Touch 'n Grow"
     message['to'] = f"{TO_MAIL}"
-    sender = f"CLHS Peer Counselling Unit <no-reply@clhsprs.com>"
-    message['From'] = Header(sender, 'utf-8')
+   sender = formataddr((COMPANY_NAME, SENDER_EMAIL))
+    message['From'] = sender
     converted = MIMEText(HTML, 'HTML')
     message.attach(converted)
     # server = smtplib.SMTP('smtp.gmail.com', port)
