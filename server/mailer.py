@@ -34,7 +34,7 @@ try:
         COMPANY_NAME = "CLHS Peer Counselling Unit"
     except IndexError:
         print("No company name present")
-        COMPANY_NAME = "CLHS Peer Counselling Unit"
+        COMPANY_NAME = ""
 
     # Create the HTML file
     HTML = ""
