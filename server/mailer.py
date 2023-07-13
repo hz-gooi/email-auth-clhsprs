@@ -83,7 +83,6 @@ try:
     message = MIMEMultipart('alternative')
     message['Subject'] = f"Login OTP for CLHS PRS Touch 'n Grow"
     message['to'] = f"{TO_MAIL}"
-    message['From'] = "no-reply@clhsprs.com"
     converted = MIMEText(HTML, 'HTML')
     message.attach(converted)
     # server = smtplib.SMTP('smtp.gmail.com', port)
