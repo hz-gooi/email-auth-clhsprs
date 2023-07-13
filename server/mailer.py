@@ -29,7 +29,7 @@ try:
     TO_MAIL = sys.argv[2]
     OTP = sys.argv[3]
     COMPANY_NAME = "CLHS Peer Counselling Unit"
-    SENDER_EMAIL = 'no-reply@clhsprs.com'
+    SENDER_EMAIL = f'{COMPANY_NAME} <{OrgMail}>'
     try:
         COMPANY_NAME = "CLHS Peer Counselling Unit"
     except IndexError:
