@@ -26,7 +26,7 @@ try:
 
 
     port = os.getenv("mailPort")
-    FROM_MAIL = "no-reply@clhsprs.com"
+    FROM_MAIL = OrgMail
     TO_MAIL = sys.argv[2]
     OTP = sys.argv[3]
     COMPANY_NAME = "CLHS Peer Counselling Unit"
@@ -81,7 +81,7 @@ try:
     #     template.writeLINEs(HTML)
 
     message = MIMEMultipart('alternative')
-    message['Subject'] = f"Login OTP for CLHS PRS TOUCH 'n Grow"
+    message['Subject'] = f"Login OTP for CLHS PRS Touch 'n Grow"
     converted = MIMEText(HTML, 'HTML')
     message.attach(converted)
     # server = smtplib.SMTP('smtp.gmail.com', port)
