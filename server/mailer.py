@@ -81,8 +81,8 @@ try:
     #     template.writeLINEs(HTML)
 
     message = MIMEMultipart('alternative')
-    message['Subject'] = "Login OTP for CLHS PRS Touch 'n Grow"
-    message['to'] = TO_MAIL
+    message['Subject'] = f"Login OTP for CLHS PRS Touch 'n Grow"
+    message['to'] = f"{TO_MAIL}"
     message['from'] = "no-reply@clhsprs.com"
     converted = MIMEText(HTML, 'HTML')
     message.attach(converted)
