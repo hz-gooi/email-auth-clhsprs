@@ -89,7 +89,7 @@ try:
     server.starttls()
     try:
         server.login(OrgMail, OrgPass)
-        server.sendmail(FROM_MAIL, [TO_MAIL], message.as_string())
+        server.sendmail(FROM_MAIL, TO_MAIL, message.as_string())
         server.quit()
         print("PYTHON SERVER :: success sent mail")
     except Exception as error:
