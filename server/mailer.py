@@ -29,7 +29,7 @@ try:
     TO_MAIL = sys.argv[2]
     OTP = sys.argv[3]
     COMPANY_NAME = "CLHS Peer Counselling Unit"
-    SENDER_EMAIL = "no-reply@clhsprs.com"
+    SENDER_EMAIL = 'no-reply@clhsprs.com'
     try:
         COMPANY_NAME = "CLHS Peer Counselling Unit"
     except IndexError:
@@ -90,7 +90,7 @@ try:
     server.starttls()
     try:
         server.login(OrgMail, OrgPass)
-        server.sendmail("CLHS Peer Counselling Unit <no-reply@clhsprs.com>", TO_MAIL, message.as_string())
+        server.sendmail(SENDER_EMAIL , TO_MAIL, message.as_string())
         server.quit()
         print("PYTHON SERVER :: success sent mail")
     except Exception as error:
