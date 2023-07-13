@@ -30,6 +30,11 @@ try:
     TO_MAIL = sys.argv[1]
     OTP = sys.argv[3]
     COMPANY_NAME = "CLHS Peer Counselling Unit"
+    try:
+        COMPANY_NAME = "CLHS Peer Counselling Unit"
+    except IndexError:
+        print("No company name present")
+        COMPANY_NAME = ""
     
 
     # Create the HTML file
