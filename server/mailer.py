@@ -84,7 +84,8 @@ try:
     converted = MIMEText(HTML, 'HTML')
     message.attach(converted)
     # server = smtplib.SMTP('smtp.gmail.com', port)
-    server = smtplib.SMTP('smtp.office365.com', port)
+    # server = smtplib.SMTP('smtp.office365.com', port)
+    server = smtplib.SMTP('mail.clhsprs.com', port)
     server.starttls()
     try:
         server.login(OrgMail, OrgPass)
