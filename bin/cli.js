@@ -95,7 +95,7 @@ function createConfig(reader) {
 
 async function verifyHTML() {
     try {
-        const htmlData = await fs.readFile(path.resolve(__dirname, "../", "custom", "index.html"), 'utf8');
+        const htmlData = await fs.readFile(path.resolve(__dirname, "../", "custom", "index.html"), { encoding: 'utf8' });
         const htmlRegEx = /{([^{}]*)}/g;
         const verificationParams = new Set(['{style}', '{CompanyName}', '{OTP}']);
 
