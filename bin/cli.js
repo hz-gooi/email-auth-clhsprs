@@ -93,23 +93,27 @@ function createConfig(reader) {
 
 }
 
-function verifyHTML() {
-    return new Promise((resolve, reject) => {
-        try {
-            let htmlData = fs.readFileSync(path.resolve(__dirname, "../", "custom", "index.html"))
-            const htmlRegEx = /({.*})/gm
-            const verificationParams = ['{style}', '{CompanyName}', '{OTP}'].toString()
-            if (htmlData.toString().match(htmlRegEx).toString() == verificationParams) {
-                console.log("email-auth-node >> verification success...")
-                resolve(true)
-            } else {
-                console.log("\n\temail-auth-node >> The HTML has missing parameters")
-                throw new Error("Run Time Error")
+async function verifyHTML() {
+    try {
+        const htmlData = await fs.readFile(path.resolve(__dirname, "../", "custom", "index.html"), 'utf8');
+        const htmlRegEx = /{([^{}]*)}/g;
+        const verificationParams = new Set(['{style}', '{CompanyName}', '{OTP}']);
+
+        const matches = htmlData.match(htmlRegEx) || [];
+        const matchingStrings = new Set(matches.map(match => match.trim()));
+
+        for (const param of verificationParams) {
+            if (!matchingStrings.has(param)) {
+                console.log("\n\temail-auth-node >> The HTML has missing parameters");
+                throw new Error("Run Time Error");
             }
-        } catch (error) {
-            reject(error)
         }
-    })
+
+        console.log("email-auth-node >> Verification success...");
+        return true;
+    } catch (error) {
+        throw new Error(`Verification Error: ${error.message}`);
+    }
 }
 
 
