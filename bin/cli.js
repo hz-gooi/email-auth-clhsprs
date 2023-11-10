@@ -93,23 +93,28 @@ function createConfig(reader) {
 
 }
 
-function verifyHTML() {
-    return new Promise((resolve, reject) => {
-        try {
-            let htmlData = fs.readFileSync(path.resolve(__dirname, "../", "custom", "index.html"))
-            const htmlRegEx = /({.*})/gm
-            const verificationParams = ['{style}', '{CompanyName}', '{OTP}'].toString()
-            if (htmlData.toString().match(htmlRegEx).toString() == verificationParams) {
-                console.log("email-auth-node >> verification success...")
-                resolve(true)
-            } else {
-                console.log("\n\temail-auth-node >> The HTML has missing parameters")
-                throw new Error("Run Time Error")
-            }
-        } catch (error) {
-            reject(error)
+const fs = require('fs').promises; // Using promise-based file system functions
+
+async function verifyHTML() {
+    try {
+        const htmlData = await fs.readFile(path.resolve(__dirname, "../", "custom", "index.html"), 'utf8');
+        const htmlRegEx = /({.*?})/gm; // Adjusted regex to capture strings within curly braces
+        const verificationParams = ['{style}', '{CompanyName}', '{OTP}'];
+
+        const matches = htmlData.match(htmlRegEx) || [];
+        const matchingStrings = matches.map(match => match.trim());
+
+        const hasMatchingParams = verificationParams.every(param => matchingStrings.includes(param));
+
+        if (hasMatchingParams) {
+            console.log("email-auth-node >> Verification success...");
+            return true;
+        } else {
+            throw new Error("The HTML has missing parameters");
         }
-    })
+    } catch (error) {
+        throw new Error(`Verification Error: ${error.message}`);
+    }
 }
 
 
