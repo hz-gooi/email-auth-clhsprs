@@ -12,10 +12,6 @@
   ],
   "routes": [
     {
-      "src": "/api/send-mail",
-      "dest": "server/mailer.py"
-    },
-    {
       "src": "/(.*)",
       "dest": "server/index.js"
     }
