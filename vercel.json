@@ -4,16 +4,23 @@
     {
       "src": "server/index.js",
       "use": "@vercel/node"
-    },
-    {
-      "src": "server/**/*.py",
-      "use": "@vercel/python"
     }
   ],
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/api/(.*)",
       "dest": "server/index.js"
     }
-  ]
+  ],
+  "env": {
+    "mailID": "@mailID",
+    "password": "@password",
+    "mailPort": "@mailPort"
+  },
+  "functions": {
+    "server/index.js": {
+      "memory": 1024,
+      "maxDuration": 10
+    }
+  }
 }
