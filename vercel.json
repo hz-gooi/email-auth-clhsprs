@@ -6,7 +6,7 @@
       "use": "@vercel/node"
     },
     {
-      "src": "mailer.py",
+      "src": "server/mailer.py",
       "use": "@vercel/python"
     }
   ],
