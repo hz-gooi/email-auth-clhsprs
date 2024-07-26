@@ -33,3 +33,11 @@ app.listen(port, ()=>{
     console.log('server started');
     console.log('port', port);
 });
+
+const pythonProcess = spawn('python3', [
+    'server/mailer.py',
+    'dart',
+    email,
+    otp,
+    'Sample session'
+]);
