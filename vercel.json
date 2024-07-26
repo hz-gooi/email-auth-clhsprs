@@ -6,11 +6,15 @@
       "use": "@vercel/node"
     },
     {
-      "src": "server/mailer.py",
+      "src": "server/**/*.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
+    {
+      "src": "/api/send-mail",
+      "dest": "server/mailer.py"
+    },
     {
       "src": "/(.*)",
       "dest": "server/index.js"
